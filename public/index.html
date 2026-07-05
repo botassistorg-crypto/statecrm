@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#050508">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="StateCRM">
+  <title>StateCRM — by ASQVI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="loading-text" id="loadingText">লোড হচ্ছে...</div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- ===================== LANDING PAGE ===================== -->
+  <div id="landingPage" style="display:none">
+    <div class="landing-outer">
+
+      <!-- Hero -->
+      <div class="land-hero">
+        <div class="land-logo">
+          <span class="land-logo-text">S</span>
+        </div>
+        <div class="land-title">আপনার ব্যবসা <span>স্মার্টলি</span> চালান</div>
+        <div class="land-sub">WhatsApp chaos থেকে মুক্তি পান। অর্ডার, লিড, পেমেন্ট, কাস্টমার — সবকিছু এক জায়গায়।</div>
+        <div class="land-cta">
+          <button class="cta-primary" onclick="showLoginForm()">লগইন করুন</button>
+          <a class="cta-secondary" href="https://asqvi.vercel.app">StateCRM সম্পর্কে জানুন</a>
+        </div>
+      </div>
+
+      <div class="land-divider"></div>
+
+      <!-- Features -->
+      <div class="land-section">
+        <div class="land-section-title">StateCRM দিয়ে যা করতে পারবেন</div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🛍️</div>
+            <div class="feature-name">অর্ডার ম্যানেজমেন্ট</div>
+            <div class="feature-desc">প্রতিটি অর্ডার ট্র্যাক করুন — status, payment, delivery সবকিছু</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <div class="feature-name">লিড ট্র্যাকিং</div>
+            <div class="feature-desc">সম্ভাব্য কাস্টমার follow-up মিস করবেন না কখনো</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">💳</div>
+            <div class="feature-name">পেমেন্ট ট্র্যাকিং</div>
+            <div class="feature-desc">কে দিয়েছে, কে দেয়নি — সব এক নজরে</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">👥</div>
+            <div class="feature-name">কাস্টমার ডেটাবেস</div>
+            <div class="feature-desc">VIP, Loyal, New — কাস্টমার সেগমেন্ট স্বয়ংক্রিয়</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🏅</div>
+            <div class="feature-name">টিম পারফরম্যান্স</div>
+            <div class="feature-desc">কোন moderator কতটা ভালো করছে — live tracking</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📱</div>
+            <div class="feature-name">মোবাইল থেকেই সব</div>
+            <div class="feature-desc">কোনো app install লাগবে না — শুধু ব্রাউজার খুলুন</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="land-divider"></div>
+
+      <!-- Why StateCRM -->
+      <div class="land-section">
+        <div class="land-section-title">কেন StateCRM?</div>
+        <div class="why-list">
+          <div class="why-card">
+            <div class="why-icon red">😤</div>
+            <div>
+              <div class="why-title">WhatsApp chaos থেকে মুক্তি</div>
+              <div class="why-desc">Inbox-এ lead হারিয়ে যাচ্ছে? StateCRM-এ সব organized থাকে।</div>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon green">✅</div>
+            <div>
+              <div class="why-title">সব এক জায়গায়</div>
+              <div class="why-desc">অর্ডার, পেমেন্ট, লিড, কাস্টমার — আলাদা notebook দরকার নেই।</div>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon blue">📱</div>
+            <div>
+              <div class="why-title">মোবাইল থেকেই চালান</div>
+              <div class="why-desc">Computer দরকার নেই। ফোন থেকেই পুরো ব্যবসা control করুন।</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="land-divider"></div>
+
+      <!-- Pricing -->
+      <div class="land-section">
+        <div class="land-section-title">প্ল্যান বেছে নিন</div>
+        <div class="price-grid">
+          <div class="price-card">
+            <div class="price-tier">Basic</div>
+            <div class="price-amount">—</div>
+            <div class="price-period">মূল্য শীঘ্রই জানানো হবে</div>
+            <ul class="price-features">
+              <li>Dashboard</li>
+              <li>অর্ডার ম্যানেজমেন্ট</li>
+              <li>পেমেন্ট ট্র্যাকিং</li>
+              <li>রিপোর্ট</li>
+            </ul>
+          </div>
+          <div class="price-card popular">
+            <div class="price-badge">জনপ্রিয়</div>
+            <div class="price-tier">Pro</div>
+            <div class="price-amount">—</div>
+            <div class="price-period">মূল্য শীঘ্রই জানানো হবে</div>
+            <ul class="price-features">
+              <li>Basic-এর সবকিছু</li>
+              <li>লিড ট্র্যাকিং</li>
+              <li>কাস্টমার ডেটাবেস</li>
+              <li>ক্যাম্পেইন ট্র্যাকার</li>
+              <li>পণ্য পরিসংখ্যান</li>
+            </ul>
+          </div>
+          <div class="price-card">
+            <div class="price-tier">Elite</div>
+            <div class="price-amount">—</div>
+            <div class="price-period">মূল্য শীঘ্রই জানানো হবে</div>
+            <ul class="price-features">
+              <li>Pro-এর সবকিছু</li>
+              <li>টিম পারফরম্যান্স</li>
+              <li>কুরিয়ার ট্র্যাকার</li>
+              <li>COD Risk ম্যানেজার</li>
+              <li>মাসিক রিপোর্ট</li>
+              <li>কাস্টমার সেগমেন্ট</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="land-divider"></div>
+
+      <!-- Testimonial -->
+      <div class="trust-box">
+        <div class="trust-text">"StateCRM ব্যবহার করার পর আমার ব্যবসায় আর কোনো অর্ডার miss হয় না। সব গুছিয়ে চলছে।"</div>
+        <div class="trust-author">— একজন StateCRM ব্যবহারকারী</div>
+      </div>
+
+      <!-- Final CTA -->
+      <div class="land-section" style="text-align:center">
+        <div class="land-section-title">আজই শুরু করুন</div>
+        <div class="land-section-sub">আপনার ব্যবসাকে পরবর্তী লেভেলে নিয়ে যান</div>
+        <div class="land-cta">
+          <button class="cta-primary" onclick="showLoginForm()">লগইন করুন</button>
+        </div>
+      </div>
+
+      <div class="land-footer">Powered by <a href="https://asqvi.vercel.app">ASQVI</a></div>
+    </div>
+  </div>
+
+  <!-- ===================== LOGIN PAGE ===================== -->
+  <div id="loginPage" style="display:none">
+    <div class="login-page">
+      <div class="login-brand">
+        <div class="login-logo">
+          <span class="login-logo-text">S</span>
+        </div>
+        <div class="login-title">StateCRM</div>
+        <div class="login-sub">by ASQVI • স্মার্ট বিজনেস ম্যানেজমেন্ট</div>
+      </div>
+      <div class="login-card">
+        <h2>আপনার অ্যাকাউন্টে প্রবেশ করুন</h2>
+        <div class="input-group">
+          <label class="input-label">লাইসেন্স কী</label>
+          <input class="input-field" type="text" id="keyInput" 
+                 placeholder="ASQVI-PRO-XXXXXX" autocomplete="off" 
+                 autocapitalize="characters" spellcheck="false">
+        </div>
+        <div class="input-group">
+          <label class="input-label">ফোন নম্বর</label>
+          <input class="input-field" type="tel" id="phoneInput" 
+                 placeholder="01XXXXXXXXX">
+        </div>
+        <button class="login-btn" id="loginBtn" onclick="doLogin()">লগইন করুন →</button>
+        <div class="login-error" id="loginErr"></div>
+      </div>
+      <button class="login-back" onclick="goBackToLanding()">← ফিরে যান</button>
+      <div class="login-footer">সহায়তার জন্য: <a href="https://asqvi.vercel.app">asqvi.vercel.app</a></div>
+    </div>
+  </div>
+
+  <!-- ===================== EXPIRED PAGE ===================== -->
+  <div id="expiredPage" style="display:none">
+    <div class="expired-page">
+      <div class="expired-icon">⏰</div>
+      <div class="expired-title">লাইসেন্সের মেয়াদ শেষ</div>
+      <div class="expired-sub" id="expiredMsg">আপনার StateCRM লাইসেন্সের মেয়াদ শেষ হয়ে গেছে।</div>
+      <a class="btn-primary" href="https://asqvi.vercel.app">ASQVI ওয়েবসাইট ভিজিট করুন</a>
+      <button class="expired-logout" onclick="logout()">← অন্য লাইসেন্স দিয়ে লগইন</button>
+    </div>
+  </div>
+
+  <!-- ===================== MAIN APP ===================== -->
+  <div class="app" id="mainApp" style="display:none">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-brand">
+        <div class="header-icon">
+          <span class="header-icon-text">S</span>
+        </div>
+        <div>
+          <div class="header-title">StateCRM</div>
+          <div class="header-sub" id="headerSub">আজকের ওভারভিউ</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="icon-btn" onclick="loadAndShow('leads','leads')">🎯</div>
+        <div class="avatar" id="userAvatar" onclick="showProfile()">S</div>
+      </div>
+    </div>
+
+    <!-- Page Container -->
+    <div class="page-container">
+
+      <!-- ===== DASHBOARD ===== -->
+      <div class="page active" id="page-dashboard">
+        <div class="greeting-section">
+          <div class="greeting-text" id="greetingText">স্বাগতম! 👋</div>
+          <div class="greeting-date" id="todayDate">লোড হচ্ছে...</div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">💰</div>
+            <div class="stat-value accent" id="stat-today">—</div>
+            <div class="stat-label">আজকের বিক্রি</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📈</div>
+            <div class="stat-value" id="stat-month">—</div>
+            <div class="stat-label">এই মাসের বিক্রি</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🛍️</div>
+            <div class="stat-value" id="stat-orders">—</div>
+            <div class="stat-label">মোট অর্ডার</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">⏳</div>
+            <div class="stat-value" id="stat-pending">—</div>
+            <div class="stat-label">Pending অর্ডার</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🎯</div>
+            <div class="stat-value" id="stat-leads">—</div>
+            <div class="stat-label">মোট লিড</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">💳</div>
+            <div class="stat-value warn" id="stat-unpaid">—</div>
+            <div class="stat-label">অপরিশোধিত</div>
+          </div>
+        </div>
+
+        <div class="alert-card" id="alertCard" style="display:none">
+          <div class="alert-icon">⚠️</div>
+          <div>
+            <div class="alert-title">অপরিশোধিত পেমেন্ট আছে</div>
+            <div class="alert-sub" id="alertText"></div>
+          </div>
+        </div>
+
+        <div class="section-label">দ্রুত কাজ করুন</div>
+        <div class="action-grid" id="quickActions"></div>
+
+        <div class="section-label">সাম্প্রতিক অর্ডার</div>
+        <div class="recent-list" id="recentOrders">
+          <div class="empty">
+            <div class="empty-icon">🛍️</div>
+            <div class="empty-title">লোড হচ্ছে...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ORDERS ===== -->
+      <div class="page" id="page-orders">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">অর্ডার লিস্ট</div>
+          <div class="page-action">
+            <button class="pill-btn" onclick="showPage('add-order')">+ অর্ডার</button>
+          </div>
+        </div>
+        <div class="search-bar">
+          <div class="search-wrap">
+            <input class="search-input" type="text" placeholder="অর্ডার খুঁজুন...">
+          </div>
+        </div>
+        <div class="data-list" id="orderList">
+          <div class="empty">
+            <div class="empty-icon">🛍️</div>
+            <div class="empty-title">লোড হচ্ছে...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ADD ORDER ===== -->
+      <div class="page" id="page-add-order">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('orders')">←</button>
+          <div class="page-title">নতুন অর্ডার</div>
+        </div>
+        <div class="form-wrap">
+          <div class="form-section">
+            <div class="form-section-title">কাস্টমার তথ্য</div>
+            <div class="field-group">
+              <label class="field-label">কাস্টমারের নাম *</label>
+              <input class="field-input" type="text" id="o-customer" placeholder="কাস্টমারের নাম">
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">ফোন *</label>
+                <input class="field-input" type="tel" id="o-phone" placeholder="01XXXXXXXXX">
+              </div>
+              <div class="field-group">
+                <label class="field-label">সোর্স</label>
+                <select class="field-select" id="o-source">
+                  <option>Facebook Inbox</option>
+                  <option>Facebook Comment</option>
+                  <option>Instagram</option>
+                  <option>WhatsApp</option>
+                  <option>Website</option>
+                  <option>Phone Call</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">ঠিকানা</label>
+              <input class="field-input" type="text" id="o-address" placeholder="ডেলিভারি ঠিকানা">
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">পণ্য তথ্য</div>
+            <div class="field-group">
+              <label class="field-label">পণ্যের নাম *</label>
+              <input class="field-input" type="text" id="o-product" placeholder="পণ্যের নাম">
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">পরিমাণ *</label>
+                <input class="field-input" type="number" id="o-qty" placeholder="১" oninput="calcOrderTotal()">
+              </div>
+              <div class="field-group">
+                <label class="field-label">একক মূল্য (৳) *</label>
+                <input class="field-input" type="number" id="o-price" placeholder="০" oninput="calcOrderTotal()">
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">ছাড় (৳)</label>
+              <input class="field-input" type="number" id="o-discount" placeholder="০" oninput="calcOrderTotal()">
+            </div>
+            <div class="field-group">
+              <label class="field-label">মোট টাকা</label>
+              <div class="total-display" id="o-total">৳ 0</div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">পেমেন্ট তথ্য</div>
+            <div class="field-group">
+              <label class="field-label">পেমেন্ট পদ্ধতি</label>
+              <select class="field-select" id="o-paytype">
+                <option>COD / ক্যাশ অন ডেলিভারি</option>
+                <option>bKash / বিকাশ</option>
+                <option>Nagad / নগদ</option>
+                <option>Rocket / রকেট</option>
+                <option>Bank Transfer / ব্যাংক ট্রান্সফার</option>
+                <option>Card / কার্ড</option>
+                <option>Other / অন্যান্য</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label class="field-label">নোট</label>
+              <input class="field-input" type="text" id="o-notes" placeholder="যেকোনো মন্তব্য...">
+            </div>
+            <button class="submit-btn" id="orderSaveBtn" onclick="saveOrder()">অর্ডার সেভ করুন</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== LEADS ===== -->
+      <div class="page" id="page-leads">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">লিড ট্র্যাকার</div>
+          <div class="page-action">
+            <button class="pill-btn" onclick="showPage('add-lead')">+ লিড</button>
+          </div>
+        </div>
+        <div class="data-list" style="padding-top:12px" id="leadList">
+          <div class="empty">
+            <div class="empty-icon">🎯</div>
+            <div class="empty-title">লোড হচ্ছে...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== ADD LEAD ===== -->
+      <div class="page" id="page-add-lead">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('leads')">←</button>
+          <div class="page-title">নতুন লিড</div>
+        </div>
+        <div class="form-wrap">
+          <div class="form-section">
+            <div class="form-section-title">লিডের তথ্য</div>
+            <div class="field-group">
+              <label class="field-label">নাম *</label>
+              <input class="field-input" type="text" id="l-name" placeholder="কাস্টমারের নাম">
+            </div>
+            <div class="field-row">
+              <div class="field-group">
+                <label class="field-label">ফোন *</label>
+                <input class="field-input" type="tel" id="l-phone" placeholder="01XXXXXXXXX">
+              </div>
+              <div class="field-group">
+                <label class="field-label">সোর্স</label>
+                <select class="field-select" id="l-source">
+                  <option>Facebook Inbox</option>
+                  <option>Facebook Comment</option>
+                  <option>Instagram</option>
+                  <option>WhatsApp</option>
+                  <option>Website</option>
+                  <option>Phone Call</option>
+                  <option>Referral</option>
+                </select>
+              </div>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Facebook Profile</label>
+              <input class="field-input" type="text" id="l-fb" placeholder="Facebook লিংক বা নাম">
+            </div>
+            <div class="field-group">
+              <label class="field-label">আগ্রহী পণ্য</label>
+              <input class="field-input" type="text" id="l-product" placeholder="কোন পণ্যে আগ্রহী?">
+            </div>
+            <div class="field-group">
+              <label class="field-label">দায়িত্বপ্রাপ্ত মডারেটর</label>
+              <input class="field-input" type="text" id="l-assigned" placeholder="কে ফলো আপ করবে?">
+            </div>
+            <div class="field-group">
+              <label class="field-label">নোট</label>
+              <input class="field-input" type="text" id="l-notes" placeholder="কথোপকথনের সারসংক্ষেপ...">
+            </div>
+            <button class="submit-btn" id="leadSaveBtn" onclick="saveLead()">লিড সেভ করুন</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== CUSTOMERS ===== -->
+      <div class="page" id="page-customers">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">কাস্টমার বেস</div>
+        </div>
+        <div class="search-bar">
+          <div class="search-wrap">
+            <input class="search-input" type="text" placeholder="কাস্টমার খুঁজুন...">
+          </div>
+        </div>
+        <div class="recent-list" id="custList">
+          <div class="empty">
+            <div class="empty-icon">👥</div>
+            <div class="empty-title">লোড হচ্ছে...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== PAYMENTS ===== -->
+      <div class="page" id="page-payments">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">পেমেন্ট</div>
+        </div>
+        <div class="data-list" style="padding-top:12px" id="payList">
+          <div class="empty">
+            <div class="empty-icon">💳</div>
+            <div class="empty-title">লোড হচ্ছে...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TEAM PERFORMANCE (Elite) ===== -->
+      <div class="page" id="page-team-performance">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">টিম পারফরম্যান্স</div>
+        </div>
+        <div class="elite-wrap">
+          <div class="elite-section">
+            <div class="elite-title">এই মাসের টিম পারফরম্যান্স</div>
+            <div id="teamList">
+              <div class="empty">
+                <div class="empty-icon">🏅</div>
+                <div class="empty-title">লোড হচ্ছে...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== COD RISK (Elite) ===== -->
+      <div class="page" id="page-cod-risk">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">COD Risk Manager</div>
+        </div>
+        <div class="elite-wrap">
+          <div class="elite-section">
+            <div class="elite-title">COD Risk বিশ্লেষণ</div>
+            <div id="codList">
+              <div class="empty">
+                <div class="empty-icon">⚠️</div>
+                <div class="empty-title">লোড হচ্ছে...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== COURIER (Elite) ===== -->
+      <div class="page" id="page-courier">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">কুরিয়ার ট্র্যাকার</div>
+        </div>
+        <div class="elite-wrap">
+          <div class="elite-section">
+            <div class="elite-title">কুরিয়ার পারফরম্যান্স</div>
+            <div id="courierList">
+              <div class="empty">
+                <div class="empty-icon">🚚</div>
+                <div class="empty-title">লোড হচ্ছে...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SEGMENTS (Elite) ===== -->
+      <div class="page" id="page-segments">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">কাস্টমার সেগমেন্ট</div>
+        </div>
+        <div class="elite-wrap">
+          <div class="elite-section">
+            <div class="elite-title">কাস্টমার বিভাজন</div>
+            <div id="segList">
+              <div class="empty">
+                <div class="empty-icon">🏷️</div>
+                <div class="empty-title">লোড হচ্ছে...</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== MONTHLY REPORT (Elite) ===== -->
+      <div class="page" id="page-monthly-report">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">মাসিক রিপোর্ট</div>
+        </div>
+        <div class="report-wrap" id="monthlyContent">
+          <div class="empty">
+            <div class="empty-icon">📅</div>
+            <div class="empty-title">লোড হচ্ছে...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== REPORTS ===== -->
+      <div class="page" id="page-reports">
+        <div class="page-header">
+          <button class="back-btn" onclick="showPage('dashboard')">←</button>
+          <div class="page-title">রিপোর্ট</div>
+        </div>
+        <div class="report-wrap" id="reportsContent">
+          <div class="empty">
+            <div class="empty-icon">📊</div>
+            <div class="empty-title">লোড হচ্ছে...</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav" id="bottomNav"></div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
